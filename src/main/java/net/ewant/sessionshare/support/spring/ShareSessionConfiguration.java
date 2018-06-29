@@ -1,8 +1,8 @@
 package net.ewant.sessionshare.support.spring;
 
 import net.ewant.sessionshare.persist.NativeSessionDao;
+import net.ewant.sessionshare.persist.RedisSessionDao;
 import net.ewant.sessionshare.persist.SessionDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -11,7 +11,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 
 @ConditionalOnClass(value = {ServerProperties.class})
 @Configuration
@@ -45,8 +44,7 @@ public class ShareSessionConfiguration {
     @ConditionalOnProperty(value = "redis.mode")
     @Bean
     public SessionDao redisSessionDao(){
-        // TODO
-        return new NativeSessionDao();
+        return new RedisSessionDao();
     }
 
     @ConditionalOnMissingBean(value = SessionDao.class)

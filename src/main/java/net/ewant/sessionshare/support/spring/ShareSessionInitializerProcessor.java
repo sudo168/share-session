@@ -10,19 +10,17 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProce
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.ResourceLoaderAware;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.type.AnnotationMetadata;
-import org.springframework.core.type.filter.AnnotationTypeFilter;
 
 import java.util.Set;
 
 public class ShareSessionInitializerProcessor implements ImportBeanDefinitionRegistrar, BeanDefinitionRegistryPostProcessor, EnvironmentAware,
         ResourceLoaderAware {
 
-    private static final String SCANNER_PACKAGE = "net.ewant.sessionshare";
+    private static final String SCANNER_PACKAGE = ShareSessionConfiguration.class.getPackage().getName();
 
     private Environment environment;
     private ResourceLoader resourceLoader;
@@ -40,7 +38,6 @@ public class ShareSessionInitializerProcessor implements ImportBeanDefinitionReg
         beanDefinition.setRole(BeanDefinition.ROLE_INFRASTRUCTURE);
         registry.registerBeanDefinition(ShareSessionInitializerProcessor.class.getSimpleName(), beanDefinition);
     }
-
 
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {

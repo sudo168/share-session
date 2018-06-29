@@ -47,6 +47,8 @@ server:
     connection-timeout: 20000
     session:
         timeout: 5
+        # session存储的名称空间，如不配置，则使用去除/后还有数据的context-path配置。如没有，默认是share-session
+        namespace: share-session
         token-parameter-name: token
         token-header-name: Authorization
         cookie:
@@ -87,3 +89,6 @@ public class DemoController {
 4. 如果拿到，则通过id获取session
 
 5. 以上均拿不到，生成新的HttpSession（有新的id）
+
+
+注： 除增加namespace、token-parameter-name、token-header-name 3个参数外，其他配置请遵循原生HttpSession配置

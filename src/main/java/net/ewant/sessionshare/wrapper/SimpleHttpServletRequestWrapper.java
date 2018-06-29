@@ -47,9 +47,9 @@ public class SimpleHttpServletRequestWrapper extends HttpServletRequestWrapper i
         if (currentSession != null && currentSession.isValid()) {// 如果一次请求中，两次拿session的时间间隔过长，有可能导致第二次拿时session过期了。这种情况可以忽略
             return currentSession;
         }
-        String sessionId = request.getParameter("token");
+        String sessionId = request.getParameter(SessionContextInitializer.tokenParameterName);
         if(StringUtils.isBlank(sessionId)){
-            sessionId = request.getHeader("Authorization");
+            sessionId = request.getHeader(SessionContextInitializer.tokenHeaderName);
             if(StringUtils.isBlank(sessionId)){
                 sessionId = request.getRequestedSessionId();
             }

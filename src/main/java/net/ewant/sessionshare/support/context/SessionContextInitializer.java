@@ -29,6 +29,10 @@ public abstract class SessionContextInitializer implements ApplicationContextAwa
 
     public static String namespace = "share-session";
 
+    public static String tokenParameterName = "token";
+
+    public static String tokenHeaderName = "Authorization";
+
     private static SessionManager manager;
 
     /**
@@ -86,6 +90,17 @@ public abstract class SessionContextInitializer implements ApplicationContextAwa
                 SessionContextInitializer.namespace = contextPath;
             }
         }
+
+        String tokenParameterName = sessionConfiguration.getTokenParameterName();
+        if(StringUtils.isNotBlank(tokenParameterName)){
+            SessionContextInitializer.tokenParameterName = tokenParameterName;
+        }
+
+        String tokenHeaderName = sessionConfiguration.getTokenHeaderName();
+        if(StringUtils.isNotBlank(tokenHeaderName)){
+            SessionContextInitializer.tokenHeaderName = tokenHeaderName;
+        }
+
         // session manager
         sessionDao.setListener(getSessionListeners());
         sessionDao.setAttributeListener(getSessionAttributeListeners());

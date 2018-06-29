@@ -23,6 +23,10 @@ public class ShareSessionConfiguration {
      */
     private String namespace;
 
+    private String tokenParameterName;
+
+    private String tokenHeaderName;
+
     private int timeout;
 
     public String getNamespace() {
@@ -39,6 +43,22 @@ public class ShareSessionConfiguration {
 
     public void setTimeout(int timeout) {
         this.timeout = timeout;
+    }
+
+    public String getTokenParameterName() {
+        return tokenParameterName;
+    }
+
+    public void setTokenParameterName(String tokenParameterName) {
+        this.tokenParameterName = tokenParameterName;
+    }
+
+    public String getTokenHeaderName() {
+        return tokenHeaderName;
+    }
+
+    public void setTokenHeaderName(String tokenHeaderName) {
+        this.tokenHeaderName = tokenHeaderName;
     }
 
     @ConditionalOnProperty(value = "redis.mode")

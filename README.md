@@ -38,7 +38,10 @@
 
 ## 3. application.yml 或者 properties中配置
 
+在server节点下
+
 server:
+
     port: 8090
     context-path: /
     connection-timeout: 20000

@@ -1,12 +1,11 @@
 package net.ewant.sessionshare.filter;
 
-import net.ewant.sessionshare.utils.HttpProtocolUtil;
 import net.ewant.sessionshare.wrapper.SimpleHttpServletRequestWrapper;
+import net.ewant.sessionshare.utils.HttpProtocolUtil;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

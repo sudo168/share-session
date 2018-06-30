@@ -8,12 +8,11 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import javax.servlet.SessionCookieConfig;
 import javax.servlet.http.Cookie;
 
+import net.ewant.sessionshare.persist.SessionDao;
 import net.ewant.sessionshare.support.context.SessionContextInitializer;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import net.ewant.sessionshare.persist.SessionDao;
 
 public class ShareSessionContext implements SessionManager {
 

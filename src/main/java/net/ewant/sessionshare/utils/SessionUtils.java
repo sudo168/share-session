@@ -2,10 +2,10 @@ package net.ewant.sessionshare.utils;
 
 import javax.servlet.http.HttpSession;
 
+import net.ewant.sessionshare.support.context.SessionContextInitializer;
 import org.apache.commons.lang3.StringUtils;
 
 import net.ewant.sessionshare.session.ShareHttpSession;
-import net.ewant.sessionshare.support.context.SessionContextInitializer;
 
 public class SessionUtils {
 

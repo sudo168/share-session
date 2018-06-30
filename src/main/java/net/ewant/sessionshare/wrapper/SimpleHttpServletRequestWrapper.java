@@ -6,12 +6,12 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.ewant.sessionshare.support.context.SessionContextInitializer;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.ewant.sessionshare.session.ShareHttpSession;
-import net.ewant.sessionshare.support.context.SessionContextInitializer;
 
 public class SimpleHttpServletRequestWrapper extends HttpServletRequestWrapper implements HttpServletRequest{
     private static final Logger logger = LoggerFactory.getLogger(SimpleHttpServletRequestWrapper.class);

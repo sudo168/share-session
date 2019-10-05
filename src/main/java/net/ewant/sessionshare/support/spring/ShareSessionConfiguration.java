@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 
 @ConditionalOnClass(value = {ServerProperties.class})
 @Configuration
-@ConfigurationProperties(prefix = "server.session")
+@ConfigurationProperties(prefix = "server.servlet.session")
 @ServletComponentScan
 public class ShareSessionConfiguration {
 

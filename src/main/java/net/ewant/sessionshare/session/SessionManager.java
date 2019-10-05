@@ -20,7 +20,7 @@ public interface SessionManager {
     /**
      * 默认session超时时间30分钟
      */
-    int DEFAULT_SESSIONTIMEOUT = 30;
+    int DEFAULT_SESSION_TIMEOUT = 30;
 
     void init();
 

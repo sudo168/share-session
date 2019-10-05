@@ -66,7 +66,7 @@ public class ShareHttpSession implements HttpSession {
     public void setMaxInactiveInterval(int interval) {
         this.maxInactiveInterval = interval;
         if (maxInactiveInterval == 0) {
-            maxInactiveInterval = ShareSessionContext.DEFAULT_SESSIONTIMEOUT * 60;
+            maxInactiveInterval = ShareSessionContext.DEFAULT_SESSION_TIMEOUT * 60;
         }
         StackTraceElement[] stack = Thread.currentThread().getStackTrace();
         if (stack.length > 2) {//反序列化调用的不进行更新

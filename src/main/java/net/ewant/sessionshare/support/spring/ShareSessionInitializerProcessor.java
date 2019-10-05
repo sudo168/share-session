@@ -47,8 +47,11 @@ public class ShareSessionInitializerProcessor implements ImportBeanDefinitionReg
         this.inited = true;
         SessionClassPathBeanDefinitionScanner scanner = new SessionClassPathBeanDefinitionScanner(registry, true, environment, resourceLoader);
         Set<BeanDefinitionHolder> beanDefinitionHolders = scanner.doScan(SCANNER_PACKAGE);
+        //Issue in spring-boot 2x: Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
         for (BeanDefinitionHolder beanDefinitionHolder : beanDefinitionHolders){
-            registry.registerBeanDefinition(beanDefinitionHolder.getBeanName(), beanDefinitionHolder.getBeanDefinition());
+            if(!registry.containsBeanDefinition(beanDefinitionHolder.getBeanName())) {
+                registry.registerBeanDefinition(beanDefinitionHolder.getBeanName(), beanDefinitionHolder.getBeanDefinition());
+            }
         }
 
         RootBeanDefinition beanDefinition = new RootBeanDefinition();

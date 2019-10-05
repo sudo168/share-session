@@ -70,7 +70,9 @@ public abstract class SessionContextInitializer implements ApplicationContextAwa
 
         // cookie 配置
         SessionCookieConfig sessionCookieConfig = servletContext.getSessionCookieConfig();
-        sessionCookieConfig.setName(SessionManager.DEFAULT_SESSION_COOKIE_NAME);
+        if(sessionCookieConfig.getName() == null){
+            sessionCookieConfig.setName(SessionManager.DEFAULT_SESSION_COOKIE_NAME);
+        }
         if(sessionCookieConfig.getPath() == null){
         	String contextPath = servletContext.getContextPath();
         	if(contextPath == null || contextPath.length() == 0){
@@ -106,7 +108,7 @@ public abstract class SessionContextInitializer implements ApplicationContextAwa
         sessionDao.setAttributeListener(getSessionAttributeListeners());
 
         manager = new ShareSessionContext(sessionCookieConfig);
-        //manager.setSessionTimeout(sessionConfiguration.getTimeout());
+        manager.setSessionTimeout(sessionConfiguration.getTimeout());
         manager.setNative(sessionDao instanceof NativeSessionDao);
         manager.setSessionDao(sessionDao);
 

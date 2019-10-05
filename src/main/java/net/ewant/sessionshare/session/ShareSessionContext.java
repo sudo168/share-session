@@ -18,7 +18,7 @@ public class ShareSessionContext implements SessionManager {
 
     private static final Logger logger = LoggerFactory.getLogger(ShareSessionContext.class);
 
-    private int sessionTimeout = DEFAULT_SESSIONTIMEOUT;
+    private int sessionTimeout = DEFAULT_SESSION_TIMEOUT;
 
     private SessionDao sessionDao;
 
@@ -221,7 +221,7 @@ public class ShareSessionContext implements SessionManager {
 
     @Override
     public void setSessionTimeout(int sessionTimeout) {
-        if (sessionTimeout != 0) {
+        if (sessionTimeout > 0) {
             this.sessionTimeout = sessionTimeout;
             setExpireSessionInterval(sessionTimeout * 60);
         }
@@ -256,7 +256,7 @@ public class ShareSessionContext implements SessionManager {
 
     @Override
     public void setExpireSessionInterval(int expireSessionInterval) {
-        if (expireSessionInterval > 0 && (this.expireSessionInterval > expireSessionInterval || this.expireSessionInterval == DEFAULT_SESSIONTIMEOUT * 60)) {
+        if (expireSessionInterval > 0 && (this.expireSessionInterval > expireSessionInterval || this.expireSessionInterval == DEFAULT_SESSION_TIMEOUT * 60)) {
             this.expireSessionInterval = expireSessionInterval;
         }
     }
